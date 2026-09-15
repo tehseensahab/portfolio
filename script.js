@@ -15,7 +15,7 @@
 
   /* ---- Mobile nav toggle ---- */
   var toggle = document.querySelector(".nav-toggle");
-  var nav = document.querySelector(".rail-nav");
+  var nav = document.querySelector(".topnav");
   if (toggle && nav) {
     toggle.addEventListener("click", function () {
       var open = nav.classList.toggle("open");
@@ -29,6 +29,43 @@
         toggle.textContent = "Menu";
       });
     });
+  }
+
+  /* ---- Scroll reveal ---- */
+  if (!reduceMotion) {
+    var revealTargets = document.querySelectorAll(".reveal");
+    var revealObserver = new IntersectionObserver(
+      function (entries, obs) {
+        entries.forEach(function (entry) {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("in-view");
+            obs.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.15, rootMargin: "0px 0px -40px 0px" }
+    );
+    revealTargets.forEach(function (el) { revealObserver.observe(el); });
+
+    var cycleWrap = document.querySelector(".cycle-wrap");
+    if (cycleWrap) {
+      var cycleObserver = new IntersectionObserver(
+        function (entries, obs) {
+          entries.forEach(function (entry) {
+            if (entry.isIntersecting) {
+              entry.target.classList.add("in-view");
+              obs.unobserve(entry.target);
+            }
+          });
+        },
+        { threshold: 0.4 }
+      );
+      cycleObserver.observe(cycleWrap);
+    }
+  } else {
+    document.querySelectorAll(".reveal").forEach(function (el) { el.classList.add("in-view"); });
+    var cw = document.querySelector(".cycle-wrap");
+    if (cw) cw.classList.add("in-view");
   }
 
   /* ---- One-time count-up on the hero metric ---- */
@@ -55,7 +92,7 @@
       window.requestAnimationFrame(step);
     };
 
-    var observer = new IntersectionObserver(
+    var metricObserver = new IntersectionObserver(
       function (entries) {
         entries.forEach(function (entry) {
           if (entry.isIntersecting) runCount();
@@ -63,6 +100,6 @@
       },
       { threshold: 0.6 }
     );
-    observer.observe(metricEl);
+    metricObserver.observe(metricEl);
   }
 })();
