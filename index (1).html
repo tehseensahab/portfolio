@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tehseen Arbab — Retention &amp; Lifecycle Marketing for DTC Brands</title>
+<meta name="description" content="Tehseen Arbab helps supplement and coffee brands turn one-time buyers into repeat customers — Klaviyo, Skio/Recharge subscriptions, Meta Ads, and the analytics to prove it's working.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..900;1,9..144,400..600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+
+:root{
+  --ink: #131109;
+  --ink-2: #1D1A10;
+  --paper: #F3EEDF;
+  --paper-dim: #A89F87;
+  --lime: #D4F24E;
+  --rust: #FF5A2B;
+  --line: rgba(243,238,223,0.14);
+  --serif: "Fraunces", ui-serif, Georgia, serif;
+  --mono: "IBM Plex Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;
+  --edge: clamp(20px, 6vw, 80px);
+}
+
+*{ box-sizing: border-box; }
+html{ scroll-behavior: smooth; }
+@media (prefers-reduced-motion: reduce){ html{ scroll-behavior: auto; } }
+
+body{
+  margin: 0;
+  background: var(--ink);
+  color: var(--paper);
+  font-family: var(--serif);
+  font-optical-sizing: auto;
+  font-weight: 400;
+  line-height: 1.55;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+a{ color: inherit; }
+.mono{ font-family: var(--mono); font-weight: 500; letter-spacing: -0.01em; }
+.lime{ color: var(--lime); }
+.rust{ color: var(--rust); }
+
+/* ---- load-in animation: pure CSS, works with zero JS ---- */
+.reveal{
+  opacity: 0;
+  transform: translateY(16px);
+  animation: revealIn 0.7s cubic-bezier(.2,.7,.2,1) forwards;
+}
+@keyframes revealIn{ to{ opacity: 1; transform: translateY(0); } }
+@media (prefers-reduced-motion: reduce){
+  .reveal{ opacity: 1; transform: none; animation: none; }
+}
+
+/* ---- top bar ---- */
+.topbar{
+  position: fixed; top:0; left:0; right:0; z-index: 40;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 20px var(--edge);
+  background: rgba(19,17,9,0.8);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  border-bottom: 1px solid var(--line);
+}
+.mark{
+  font-family: var(--mono); font-weight: 500; font-size: 0.92rem;
+  text-decoration: none; color: var(--paper);
+  border: 1px solid var(--paper); padding: 6px 11px;
+}
+.topnav{ display:flex; gap: 28px; font-family: var(--mono); font-size: 0.8rem; }
+.topnav a{ text-decoration: none; color: var(--paper); }
+.topnav a:hover, .topnav a:focus-visible{ color: var(--lime); }
+.nav-toggle{ display:none; }
+.cta-btn{
+  font-family: var(--mono); font-size: 0.8rem;
+  text-decoration: none; color: var(--ink); background: var(--lime);
+  padding: 9px 16px; border: 1px solid var(--lime);
+}
+.cta-btn:hover{ background: transparent; color: var(--lime); }
+
+/* ---- hero ---- */
+.hero{
+  padding: 150px var(--edge) 80px;
+  border-bottom: 1px solid var(--line);
+}
+.eyebrow{ font-family: var(--mono); font-size: 0.78rem; color: var(--paper-dim); margin: 0 0 26px; }
+.hero h1{
+  font-family: var(--serif); font-weight: 340;
+  font-size: clamp(2.3rem, 5.4vw, 4.4rem);
+  line-height: 1.06; letter-spacing: -0.015em;
+  margin: 0 0 30px; max-width: 18ch;
+}
+.hero-lede{
+  font-size: clamp(1.02rem, 1.6vw, 1.2rem);
+  color: var(--paper-dim); max-width: 58ch; margin: 0 0 54px;
+}
+
+.stat-bar{
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0,1fr));
+  border-top: 1px solid var(--line);
+}
+.stat{ padding: 30px 28px 0 0; }
+.stat + .stat{ padding-left: 28px; border-left: 1px solid var(--line); }
+.stat-num{ font-size: clamp(1.6rem, 3.6vw, 2.3rem); display:block; margin-bottom: 10px; }
+.stat-num .arrow{ color: var(--paper-dim); font-size: 0.75em; margin: 0 6px; }
+.stat p{ margin: 0; color: var(--paper-dim); font-size: 0.92rem; max-width: 38ch; }
+
+/* ---- sections ---- */
+.section{ padding: 90px var(--edge); border-bottom: 1px solid var(--line); }
+.section-head{
+  font-family: var(--serif); font-weight: 340;
+  font-size: clamp(1.8rem, 3.6vw, 2.6rem);
+  letter-spacing: -0.01em; margin: 0 0 16px;
+}
+.section-lede{ color: var(--paper-dim); max-width: 60ch; margin: 0 0 48px; font-size: 1.02rem; }
+
+/* ---- why section ---- */
+.why-grid{
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0,1fr));
+  gap: 1px;
+  background: var(--line);
+  border: 1px solid var(--line);
+}
+.why-item{ background: var(--ink); padding: 30px; }
+.why-item .tag{ font-size: 0.72rem; color: var(--rust); display:block; margin-bottom: 12px; }
+.why-item h3{ font-family: var(--serif); font-weight: 500; font-size: 1.15rem; margin: 0 0 10px; }
+.why-item p{ margin: 0; color: var(--paper-dim); font-size: 0.96rem; max-width: 42ch; }
+
+/* ---- services list ---- */
+.service-list{ list-style: none; margin: 0; padding: 0; }
+.service-list li{
+  display: grid; grid-template-columns: 90px 1fr; gap: 26px; align-items: baseline;
+  padding: 26px 0; border-top: 1px solid var(--line);
+}
+.service-list li:last-child{ border-bottom: 1px solid var(--line); }
+.service-list .idx{ font-size: 1.6rem; color: var(--paper-dim); opacity: 0.55; }
+.service-list h3{ font-family: var(--serif); font-weight: 500; font-size: 1.2rem; margin: 0 0 8px; }
+.service-list p{ margin:0; color: var(--paper-dim); font-size: 0.98rem; max-width: 56ch; }
+
+/* ---- case studies ---- */
+.case{ padding: 40px 0; border-top: 1px solid var(--line); }
+.case:last-child{ border-bottom: 1px solid var(--line); }
+.case-tag{ display:inline-block; font-size: 0.72rem; margin-bottom: 16px; }
+.case-top{ display:flex; align-items:baseline; justify-content: space-between; gap: 20px; flex-wrap: wrap; }
+.case h3{ font-family: var(--serif); font-weight: 400; font-size: clamp(1.5rem, 3vw, 2.1rem); margin: 0 0 14px; }
+.case-metric{ font-size: 1.1rem; white-space: nowrap; }
+.case p{ margin:0; color: var(--paper-dim); max-width: 66ch; font-size: 1.02rem; }
+
+/* ---- tools ---- */
+.tool-list{
+  list-style:none; margin:0; padding:0;
+  display:grid; grid-template-columns: repeat(6, minmax(0,1fr));
+  border-top: 1px solid var(--line); border-left: 1px solid var(--line);
+}
+.tool-list li{
+  padding: 26px 14px; text-align:center;
+  border-right: 1px solid var(--line); border-bottom: 1px solid var(--line);
+  font-size: 0.92rem; transition: background 0.2s ease, color 0.2s ease;
+}
+.tool-list li:hover{ background: var(--lime); color: var(--ink); }
+
+/* ---- contact ---- */
+.contact h2{
+  font-family: var(--serif); font-weight: 340;
+  font-size: clamp(2.2rem, 6vw, 3.6rem); line-height: 1.05; margin: 0 0 28px;
+}
+.big-link{
+  display:block; font-family: var(--serif); font-weight: 400;
+  font-size: clamp(1.4rem, 4vw, 2.4rem); text-decoration:none; color: var(--lime);
+  margin: 32px 0 16px; border-bottom: 2px solid transparent; width: fit-content;
+  transition: border-color 0.2s ease;
+}
+.big-link:hover, .big-link:focus-visible{ border-color: var(--lime); }
+.phone{ display:block; color: var(--paper-dim); text-decoration:none; font-size: 1rem; }
+
+.foot{ padding: 28px var(--edge) 44px; font-family: var(--mono); font-size: 0.72rem; color: var(--paper-dim); }
+.foot p{ margin:0; }
+
+/* ---- responsive ---- */
+@media (max-width: 860px){
+  .why-grid{ grid-template-columns: 1fr; }
+  .tool-list{ grid-template-columns: repeat(3, minmax(0,1fr)); }
+}
+@media (max-width: 720px){
+  .topnav{ display:none; }
+  .nav-toggle{
+    display:block; background: transparent; color: var(--paper);
+    border: 1px solid var(--paper); font-family: var(--mono); font-size: 0.78rem;
+    padding: 6px 12px; cursor: pointer;
+  }
+  .topnav.open{
+    display:flex; position: fixed; inset:0; top: 64px; background: var(--ink);
+    flex-direction: column; padding: 8px var(--edge); z-index: 39;
+  }
+  .topnav.open a{ padding: 16px 0; border-top: 1px solid var(--line); font-size: 1.05rem; }
+  .topnav.open .cta-btn{ margin-top: 16px; text-align:center; }
+  .stat-bar{ grid-template-columns: 1fr; }
+  .stat + .stat{ padding-left: 0; border-left: none; border-top: 1px solid var(--line); padding-top: 26px; margin-top: 26px; }
+  .service-list li{ grid-template-columns: 1fr; gap: 8px; }
+  .tool-list{ grid-template-columns: repeat(2, minmax(0,1fr)); }
+}
+</style>
+</head>
+<body>
+
+<header class="topbar">
+  <a href="#top" class="mark">TA</a>
+  <nav class="topnav" aria-label="Section navigation">
+    <a href="#why">Why me</a>
+    <a href="#services">Services</a>
+    <a href="#cases">Case studies</a>
+    <a href="#tools">Tools</a>
+    <a href="#contact" class="cta-btn">Get in touch</a>
+  </nav>
+  <button class="nav-toggle" aria-expanded="false" aria-label="Open menu">Menu</button>
+</header>
+
+<main id="top">
+
+  <section class="hero">
+    <p class="eyebrow reveal">Bahawalpur, Pakistan — retention &amp; lifecycle marketing for DTC brands, worldwide</p>
+    <h1 class="reveal">Your customers buy once. I build the system that gets them to buy again.</h1>
+    <p class="hero-lede reveal">Retention and lifecycle marketing for supplement and coffee
+      brands — Klaviyo, subscription logic on Skio or Recharge, and Meta Ads, backed by the
+      analytics and forecasting to show it's actually working.</p>
+
+    <div class="stat-bar reveal">
+      <div class="stat">
+        <span class="stat-num mono">$500K<span class="arrow">→</span><span class="lime">$700K/mo</span></span>
+        <p>Revenue run-rate growth leading retention for a DTC supplement brand.</p>
+      </div>
+      <div class="stat">
+        <span class="stat-num mono">$15K<span class="arrow">→</span><span class="lime">$30K</span></span>
+        <p>Revenue growth for a US coffee brand — doubled during my engagement.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="why" class="section why">
+    <h2 class="section-head reveal">If you sell something people reorder, this is for you</h2>
+    <p class="section-lede reveal">Most retention problems in ecommerce aren't a Klaviyo
+      problem — they're a timing and data problem. Here's where that usually shows up.</p>
+    <div class="why-grid">
+      <div class="why-item reveal">
+        <span class="tag mono">Problem</span>
+        <h3>Flows built on a generic clock</h3>
+        <p>A 30-day post-purchase sequence doesn't know if your product runs out in 3 weeks
+          or 3 months. I build reorder timing around actual usage, not a template default.</p>
+      </div>
+      <div class="why-item reveal">
+        <span class="tag mono">Problem</span>
+        <h3>Rising ad costs, flat repeat rate</h3>
+        <p>If new-customer acquisition is doing all the work, margins shrink every quarter.
+          I build the retention and subscription layer that takes pressure off ad spend.</p>
+      </div>
+      <div class="why-item reveal">
+        <span class="tag mono">Problem</span>
+        <h3>No real visibility into what's working</h3>
+        <p>I run structured A/B tests and segment by behavior, not just purchase date, so
+          decisions come from data — not a hunch about what the next email should say.</p>
+      </div>
+      <div class="why-item reveal">
+        <span class="tag mono">Problem</span>
+        <h3>Subscribers who quietly churn</h3>
+        <p>Save flows, flexible cadence options, and win-back sequences timed to when
+          someone's actually at risk of cancelling — not after they already have.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="services" class="section services">
+    <h2 class="section-head reveal">What I do</h2>
+    <p class="section-lede reveal">The full loop from first purchase to repeat customer —
+      not just email.</p>
+    <ul class="service-list">
+      <li class="reveal">
+        <span class="idx mono">01</span>
+        <div><h3>Klaviyo flows &amp; campaigns</h3>
+        <p>Built around how your product is actually used, not a generic template pack.</p></div>
+      </li>
+      <li class="reveal">
+        <span class="idx mono">02</span>
+        <div><h3>Subscription &amp; replenishment logic</h3>
+        <p>Skio and Recharge setup, cadence options, and reorder timing tied to real consumption.</p></div>
+      </li>
+      <li class="reveal">
+        <span class="idx mono">03</span>
+        <div><h3>Meta Ads</h3>
+        <p>Acquisition and retargeting that hands off cleanly into the retention side of the funnel.</p></div>
+      </li>
+      <li class="reveal">
+        <span class="idx mono">04</span>
+        <div><h3>Shopify</h3>
+        <p>Store setup and technical work to support the flows, subscriptions, and tracking above.</p></div>
+      </li>
+      <li class="reveal">
+        <span class="idx mono">05</span>
+        <div><h3>Analytics &amp; forecasting</h3>
+        <p>Cohort LTV, retention curves, and revenue forecasting — so growth isn't a guess.</p></div>
+      </li>
+      <li class="reveal">
+        <span class="idx mono">06</span>
+        <div><h3>Segmentation &amp; A/B testing</h3>
+        <p>Structured tests and behavior-based segments that show what's actually moving the number.</p></div>
+      </li>
+    </ul>
+  </section>
+
+  <section id="cases" class="section cases">
+    <h2 class="section-head reveal">Case studies</h2>
+
+    <article class="case reveal">
+      <div class="case-top">
+        <div>
+          <span class="case-tag mono lime">Retention lead</span>
+          <h3>DTC supplement brand</h3>
+        </div>
+        <span class="case-metric mono lime">$500K → $700K/mo</span>
+      </div>
+      <p>Owned the retention program for a direct-to-consumer supplement brand and grew
+        monthly revenue run-rate from roughly $500K to $700K, through flow rebuilds,
+        segmentation, and reorder-timed campaigns.</p>
+    </article>
+
+    <article class="case reveal">
+      <div class="case-top">
+        <div>
+          <span class="case-tag mono rust">Retention &amp; lifecycle</span>
+          <h3>US coffee brand</h3>
+        </div>
+        <span class="case-metric mono rust">$15K → $30K</span>
+      </div>
+      <p>Rebuilt the lifecycle program for a US-based coffee brand and helped scale revenue
+        from $15K to $30K, applying the same reorder-timing logic used for consumable
+        products.</p>
+    </article>
+
+    <article class="case reveal">
+      <div class="case-top">
+        <div>
+          <span class="case-tag mono lime">Retention strategy</span>
+          <h3>Clearer</h3>
+        </div>
+      </div>
+      <p>Started with a full audit of Clearer's Klaviyo setup, then went beyond the audit to
+        rebuild the lifecycle strategy itself — increasing customer retention and bringing
+        the churn rate down.</p>
+    </article>
+  </section>
+
+  <section id="tools" class="section tools">
+    <h2 class="section-head reveal">Tools</h2>
+    <ul class="tool-list">
+      <li class="reveal">Klaviyo</li>
+      <li class="reveal">Skio</li>
+      <li class="reveal">Recharge</li>
+      <li class="reveal">Meta Ads</li>
+      <li class="reveal">Shopify</li>
+      <li class="reveal">Analytics</li>
+    </ul>
+  </section>
+
+  <section id="contact" class="section contact">
+    <h2 class="reveal">Let's build the next cycle.</h2>
+    <p class="section-lede reveal">Taking on new retention and lifecycle work with DTC and
+      Shopify brands — particularly supplements and coffee. For agency-scale execution,
+      that's <a href="https://amyradigitalsolutions.com" target="_blank" rel="noopener">Amyra
+      Digital Solutions</a>; for direct freelance work, reach out below.</p>
+    <a class="big-link reveal" href="mailto:contact@tehseenarbab.com">contact@tehseenarbab.com</a>
+    <a class="mono phone reveal" href="tel:+15173121481">+1 517 312 1481</a>
+  </section>
+
+  <footer class="foot">
+    <p>Tehseen Arbab — Bahawalpur, Pakistan</p>
+  </footer>
+
+</main>
+
+<script>
+(function(){
+  "use strict";
+  var toggle = document.querySelector(".nav-toggle");
+  var nav = document.querySelector(".topnav");
+  if (toggle && nav){
+    toggle.addEventListener("click", function(){
+      var open = nav.classList.toggle("open");
+      toggle.setAttribute("aria-expanded", open ? "true" : "false");
+      toggle.textContent = open ? "Close" : "Menu";
+    });
+    nav.querySelectorAll("a").forEach(function(link){
+      link.addEventListener("click", function(){
+        nav.classList.remove("open");
+        toggle.setAttribute("aria-expanded", "false");
+        toggle.textContent = "Menu";
+      });
+    });
+  }
+})();
+</script>
+</body>
+</html>
